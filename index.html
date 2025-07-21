@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKMFP - Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="L.png">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-700: #333333;
+            --red: #FF3B30;
+            --blue: #eeeeee;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--black);
+            color: #EEEEEE;
+            font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #EEEEEE;
+        }
+
+        .logo-icon {
+            background: var(--white);
+            color: var(--black);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .hero-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: #EEEEEE; 
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #EEEEEE; 
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            height: 500px;
+            width: 370px;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .hero-image img {
+            width: 90%;
+            height: auto;
+            max-width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            display: block;
+        }
+
+
+        .hero-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-icon {
+            font-size: 8rem;
+            color: #EEEEEE; 
+            opacity: 0.8;
+        }
+
+        .new-badge {
+		    
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: var(--red);
+            color: yellow;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+        }
+
+        .arabic-section .hero-container {
+            direction: rtl;
+        }
+
+        .arabic-section .hero-content {
+            text-align: right;
+        }
+
+        .arabic-section .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .purchase-button-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .arabic-section .purchase-button-container {
+            justify-content: flex-end;
+        }
+
+        .pill-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            background: var(--blue);
+            color: #000000;
+        }
+
+        .pill-btn:hover {
+            background: transparent;
+            color: var(--blue);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .audience-section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+            color: #EEEEEE;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--blue);
+            border-radius: 2px;
+        }
+
+        .audience-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .audience-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .audience-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+        
+        .audience-list {
+            list-style: none;
+        }
+
+        .audience-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            color: #EEEEEE;
+        }
+
+        .audience-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .english-list li:before {
+            left: 0;
+        }
+
+        .arabic-list li:before {
+            right: 0;
+        }
+
+        .policy-section {
+            padding: 80px 0;
+        }
+
+        .policy-container {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 16px;
+            padding: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .policy-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--blue);
+        }
+
+        .policy-content {
+            margin-bottom: 40px;
+        }
+
+        .policy-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #EEEEEE;
+        }
+
+        .warning {
+            text-align: right;
+            color: var(--white);
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 59, 48, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--red);
+        }
+
+        .warning1 {
+            text-align: left;
+            color: var(--white);
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 59, 48, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--red);
+        }
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #EEEEEE;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                gap: 40px;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                width: 250px;
+                height: 350px;
+                order: -1;
+            }
+
+            .hero-image img {
+            width: 90%;
+            height: auto;
+            max-width: 100%;
+            max-height: 700px;
+            object-fit: contain;
+            display: block;
+            } 
+            
+            .arabic-section .hero-container {
+                direction: ltr;
+            }
+            
+            .arabic-section .hero-content {
+                text-align: left;
+            }
+            
+            .purchase-button-container, 
+            .arabic-section .purchase-button-container {
+                justify-content: center;
+            }
+            
+            .audience-columns {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .policy-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <span>NKMFP</span>
+            </div>
+        </div>
+    </header>
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Tired of confusing AI responses?</h1>
+                <p class="hero-text">This book is your key to understanding how language models actually think. From now on, you'll craft prompts that make the model understand you as if you're speaking to a person who truly gets you.</p>
+                <p class="hero-text">No more frustration. No more guessing just precise, tailored responses that match your intent. Begin your journey to prompt mastery... and let the model work for you, not against you.</p>
+                <div class="purchase-button-container">
+                    <a href="https://dev-nkmfp-pay.pantheonsite.io/payment-gateway1/index.php?lang=en&currency=solana" class="pill-btn">Buy the English version</a>                                                                                                                                                                                  <!-------------------------------------->
+                </div>
+            </div>
+            <div class="hero-image">
+                <img class="fas fa-book-open book-icon" src="CPE.png"></img>
+                <div class="new-badge">14.99 USD</div>
+            </div>
+        </div>
+    </section>
+    <section class="hero-section arabic-section">
+        <div class="container hero-container">
+            <div class="hero-image">
+                <img class="fas fa-book-open book-icon" src="CPA.png"></img>
+                <div class="new-badge">14.99 USD</div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">هل سئمت من ردود الذكاء االصطناعي الغامضة؟</h1>
+                <p class="hero-text">هذا الكتاب هو مفتاحك لفهم كيف "تفكر" النماذج اللغوية. من الان فصاعًدا، ستكتب برومبتات تجعل النموذج يفهمك كما لو كنت تتحدث إىل إنسان يفهمك تماًما.</p>
+                <p class="hero-text">لا مزيد من الإحباط، لا مزيد من التخمين فقط استجابات دقيقة
+ومخصصة لأسلوبك.
+ابدأ رحلتك نحو احتراف البرومتات... ودع النموذج يعمل
+لصالحك، لا ضدك.</p>
+                
+                <!-- زر شراء النسخة العربية -->
+                <div class="purchase-button-container">
+                    <a href="https://dev-nkmfp-pay.pantheonsite.io/payment-gateway1/index.php?lang=en&currency=solana" class="pill-btn">شراء النسخة العربية</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience-section">
+        <div class="container">
+            <div class="audience-container">
+                <div class="audience-columns">
+                    <div class="audience-column">
+                        <h3 class="audience-title">من يجب أن يقرأ هذا الكتاب؟</h3>
+                        <ul class="audience-list arabic-list">
+                            <li>المبرمجون والمطورون الذين يريدون تحسين استخدامهم لنماذج الذكاء االصطناعي</li>
+                            <li>كتاب المحتوى والمحررون الذين يسعون لجعل الذكاء االصطناعي يكتب بأسلوبهم</li>
+                            <li>المصممون والمبدعون في مجال الصور و الفيديوهات الذين يعتمدون عىل توليد الصور و الفيديوهات من النصوص</li>
+                            <li>لطالب والباحثون الذين يستخدمون الذكاء االصطناعي للمذاكرة أو توليد األفكار</li>
+                            <li>المدربون وأصحاب الكورسات الذين يريدون استخدام AI بشكل احترافي</li>
+                            <li>لمسوقون الرقميون وُمدخلو البيانات الذين يحتاجون نتائج دقيقة وسريعة</li>
+                            <li>اي شخص يعتمد عىل الذكاء االصطناعي في عمله ويريد نتائج مفهومة وفّعالة</li>
+                        </ul>
+                    </div>
+                    <div class="audience-column">
+                        <h3 class="audience-title">Who should read this book?</h3>
+                        <ul class="audience-list english-list">
+                            <li>Programmers and developers who want to improve their AI interactions</li>
+                            <li>Writers and editors looking to make AI write in their tone and voice</li>
+                            <li>Designers and image creators relying on text-to-image and videos generation</li>
+                            <li>Students and researchers using AI for studying or brainstorming</li>
+                            <li>Coaches and course creators who need professional AI assistance</li>
+                            <li>Digital marketers and data operators requiring fast and accurate results</li>
+                            <li>Anyone using AI in their work who needs clear, useful, and tailored outputs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Section -->
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-container">
+                <h2 class="policy-title">سياسة حماية حقوق النشر واستخدام الكتاب الرقمي</h2>
+                <div class="policy-content">
+                    <p class="policy-text"></p>
+                    <p class="policy-text"></p>
+                    <div class="warning">هذا الكتاب الرقمي مخصص للاستخدام الشخصي فقط، ولا يجوز مشاركته أو تداوله أو نسخه لأي
+طرف آخر، سواء داخل الأسرة أو الفريق أو بين الأصدقاء.
+يمنع تماما إعادة بيع الكتاب أو نشره على أي منصة كانت، بما في ذلك مجموعات تليجرام، المنتديات،
+المتاجر الإلكترونية او البريد الإلكتروني.
+جميع الحقوق محفوظة ومحمية بموجب قوانين حماية الملكية الفكرية محليا ودوليا، وأي انتهاك لهذه
+الشروط قد يعرض صاحبه للمساءلة القانونية.
+يباع هذا الكتاب حصريا من خلال الموقع الرسمي فقط، وأي عملية شراء أو توزيع خارج هذا النطاق
+تعتبر غير قانونية.
+لا تقبل أي طلبات استرجاع بعد تحميل النسخة الرقمية، وذلك لضمان حفظ حقوق المؤلف ومنع
+إساءة استخدام المحتوى.</div>
+                </div>
+                
+                <h2 class="policy-title">Digital Book Copyright & Usage Policy</h2>
+                <div class="policy-content">
+                    <p class="policy-text"></p>
+                    <p class="policy-text"></p>
+                    <div class="warning1">This digital book is intended strictly for personal use. It may not be shared, copied, or
+distributed to others, even within a household or a team.
+Reselling or republishing the book on any platform — including Telegram groups,
+forums, digital stores, or email — is strictly prohibited.
+All rights are reserved and protected under local and international intellectual
+property laws. Any violation of these terms may result in legal consequences.
+The book is sold exclusively through the official website. Any sale or distribution
+outside this platform is considered unauthorized and illegal.
+Refunds are not accepted once the digital version is downloaded, to protect the
+author's rights and prevent content misuse.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NKMFP. All rights reserved. Unauthorized distribution prohibited.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            const sections = document.querySelectorAll('.hero-section, .audience-section, .policy-section');
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(section);
+            });
+            
+            const purchaseButtons = document.querySelectorAll('.purchase-button-container .pill-btn');
+            purchaseButtons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
